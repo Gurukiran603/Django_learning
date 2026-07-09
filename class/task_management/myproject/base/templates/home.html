@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Add Task</h2>
+
+
+<a href="{% url 'read_article' %}">View Tasks</a>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

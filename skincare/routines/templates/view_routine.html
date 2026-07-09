@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2> 🌈 My Routines</h2>
+
+
+<button><a href="{% url 'select_routine_type' %}">Build AM/PM Routine</a></button>
+
+{% for routine in routines %}
+  <h3>{{ routine.get_routine_type_display }} Routine</h3>
+  <ul>
+    {% for step in routine.steps.all %}
+      <li>Step {{ step.step_number }}: {{ step.product.name }} ({{ step.product.category }})</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'edit_routine' routine.routine_type %}">Edit Step Order</a>
+
+{% empty %}
+  <p>No routines yet.</p>
+{% endfor %}
+
+
+{% endblock %}

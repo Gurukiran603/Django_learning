@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2>Article list</h2>
+<a href="{% url 'home' %}"><button>Add Article</button></a><br><br>
+
+<form>
+    <input type="text" name="q" placeholder="search🔎" value="{{search | default:''}}">
+    <button type="submit">Submit</button> <br><br>
+</form>
+
+<table border="1" cellpadding="25" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Sl no</th>
+            <th>TItle</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>cost</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in sakshi %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.desc}}</td>
+            <td>{{i.author}}</td>
+            <td>{{i.cost}}</td>
+            <td>
+                <a href="{% url 'update_article' i.id %}"><button>Edit</button></a>
+                <a href="{% url 'delete_article' i.id %}"><button>Delete</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<!-- <h2>Article list </h2>
+<a href="{% url 'home' %}"><button>Add Article</button></a><br><br>
+
+<ul>
+    {% for i in sakshi %}
+    <li>
+        Title:{{i.title}} <br>
+        Description:{{i.desc}} <br>
+        Author:{{i.author}} <br>
+        cost:{{i.cost}} <br>
+
+        <a href=""><button>Edit</button></a><br>
+        <a href=""><button>Delete</button></a> <br><br><br>
+    </li>
+    {% endfor %}
+</ul> -->
+{% endblock %}

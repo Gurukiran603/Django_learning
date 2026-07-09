@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Destinations</h1><br>
+<a href="{% url 'home' %}"><button>Add Destination</button></a><br><hr>
+<form method="GET">
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Search destinations...">
+    <button type="submit">Search</button></form><br>
+    <a href="{% url 'read_destination' %}"><button>All Destinations</button></a> <br><hr>
+
+<br>
+<table border="1px" cellpadding="10px" cellspacing="0">
+    <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Description</th>
+        <th>Average Cost</th>
+        <th>Rating</th>
+        <th>Actions</th>
+    </tr>
+    {% for destination in destinations %}
+    <tr>
+        <td>{{ destination.name }}</td>
+        <td>{{ destination.country }}</td>
+        <td>{{ destination.description }}</td>
+        <td>{{ destination.average_cost }}</td>
+        <td>{{ destination.rating }}</td>
+        <td>
+            <a href="{% url 'update_destination' destination.pk %}"><button>Update</button></a>
+            <a href="{% url 'delete_destination' destination.pk %}"><button>Delete</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

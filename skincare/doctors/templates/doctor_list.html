@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Our Dermatologists</h2>
+{% if user.profile.role == 'admin' %}  
+  <a href="{% url 'add_doctor' %}" class="dashboard-card">➕ Add Doctor</a><br>
+{% endif %}
+<br>
+{% if user.profile.role == 'admin' %}  
+  <a href="{% url 'inactive_doctors' %}">Inactivate doctors </a>
+{% endif %}
+
+<div class="doctor-list" >
+  {% for doctor in doctors %}
+    <div class="doctor-card">
+      {% if doctor.image %}
+        <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" width="150">
+      {% endif %}
+      <h3><a href="{% url 'doctor_detail' doctor.id %}">{{ doctor.name }}</a></h3>
+      <p><strong>{{ doctor.specialization }}</strong></p>
+      <p>{{ doctor.availability }}</p>
+      {% if user.profile.role == 'admin' %}
+        <button><a href="{% url 'edit_doctor' doctor.id %}">Edit</a></button>
+        <button><a href="{% url 'delete_doctor' doctor.id %}">Delete</a></button>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No doctors available right now.</p>
+  {% endfor %}
+</div>
+{% endblock %}

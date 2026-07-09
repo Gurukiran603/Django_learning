@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>patient Data</h1>
+<a href="{% url 'read_patients' %}"><button>View All Patients</button></a>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+    
+</form>
+{% endblock %}

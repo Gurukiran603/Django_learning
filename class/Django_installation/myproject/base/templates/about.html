@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+   <h2>Feedback page</h2><br><br>
+   <p>The feedback of the trainer: {{ rudra.trainer }}
+    for taking the subject: {{ rudra.subject }} is {{ rudra.feedback }}"."
+   </p>
+   <a href="{% url 'home' %}"><button>Back to Home</button></a>
+{% endblock %}

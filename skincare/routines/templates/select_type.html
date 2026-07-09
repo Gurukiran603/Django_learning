@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Select Routine Type</h2>
+<form method="POST">
+  {% csrf_token %}
+  <label><input type="radio" name="routine_type" value="AM">🌞 Morning</label><br>
+  <label><input type="radio" name="routine_type" value="PM">🌚 Evening</label><br><br>
+  <button type="submit">Next</button>
+</form>
+{% endblock %}

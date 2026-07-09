@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="user-dashboard">
+  <h2>User Dashboard</h2>
+  <ul>
+    <li><a href="{% url 'take_quiz' %}">Take Skin Type Quiz</a></li><br>
+    <li><a href="{% url 'product_list' %}">View Products</a></li><br>
+    <li><a href="{% url 'homemade_list' %}">View Homemade Skincare</a></li><br>
+    <li><a href="{% url 'select_routine_type' %}">Build AM/PM Routine</a></li>
+  </ul>
+</div>
+{% endblock %}

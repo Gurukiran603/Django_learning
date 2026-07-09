@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Skincare Blog</h2>
+
+{% if user.profile.role == 'admin' %}  
+  <a href="{% url 'add_blog' %}" class="dashboard-card">➕ Add Blog</a>
+{% endif %}
+
+<div class="blog-list">
+  {% for blog in blogs %}
+    <div class="blog-card">
+      <h3><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></h3>
+      {% if blog.image %}
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+      {% endif %}
+      <p>{{ blog.category }} | {{ blog.created_at|date:"d M Y" }}</p>
+      
+      {% if user.profile.role == 'admin' %}
+        <div class="button-group">
+          <button><a href="{% url 'edit_blog' blog.id %}">Edit</a></button>
+          <button><a href="{% url 'delete_blog' blog.id %}">Delete</a></button>
+        </div>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No blogs available right now.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

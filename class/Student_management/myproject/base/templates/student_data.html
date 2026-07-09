@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Student Data</h2>
+<a href="{% url 'home' %}"><button>Add student</button></a> <br><br>
+<form method="GET">
+    <input type="text" name="search" placeholder="Search..." value="{{ search_query }}">
+    <button type="submit">Search</button>
+</form>
+<table margin="10px" cellpadding="10px" cellspacing="0px" border="1px">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Roll Number</th>
+            <th>Class</th>
+            <th>Age</th>
+            <th>Total Marks</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.roll_number }}</td>
+            <td>{{ student.class_name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.total_marks }}</td>
+            <td>
+                <a href="{% url 'update_student' student.id %}">Update</a>
+                <a href="{% url 'delete_student' student.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="user-dashboard">
+<h2>Welcome, Admin!</h2>
+
+<div class="dashboard-links">
+    <a href="{% url 'add_product' %}" class="dashboard-card">➕ Add Product</a><br>
+
+    <a href="{% url 'add_question_with_options' %}" class="dashboard-card">➕ADD questions</a><br>
+
+    <a href="{% url 'add_doctor' %}" class="dashboard-card">➕ Add Doctor</a><br>
+    
+
+    <a href="{% url 'add_blog' %}" class="dashboard-card">➕ Add Blog</a><br>
+    
+    <a href="{% url 'add_remedy' %}" class="dashboard-card">➕ Add Homemade Remedy</a>
+   
+</div>
+</div>
+{% endblock %}

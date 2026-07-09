@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Delete Destination</h1>
+<p>Are you sure you want to delete "{{ destination.name }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'read_destination' %}"><button type="button">Cancel</button></a>
+</form>
+{% endblock %}

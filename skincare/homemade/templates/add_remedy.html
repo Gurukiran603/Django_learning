@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Homemade Skincare</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Remedy</button>
+</form>
+<button><a href="{% url 'homemade_list' %}" >Back to homemade list</a></button>
+{% endblock %}

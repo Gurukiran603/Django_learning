@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Task List</h2>
+
+<a href="{% url 'home' %}">Add Task</a>
+
+<table border="1">
+<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Priority</th>
+    <th>Hours</th>
+    <th>Progress</th>
+    <th>Actions</th>
+</tr>
+
+{% for i in data %}
+<tr>
+    <td>{{ i.title }}</td>
+    <td>{{ i.description }}</td>
+    <td>{{ i.priority }}</td>
+    <td>{{ i.estimated_hours }}</td>
+    <td>{{ i.progress }}%</td>
+    <td>
+        <a href="{% url 'update_article' i.id %}">Edit</a>
+        <a href="{% url 'delete_article' i.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

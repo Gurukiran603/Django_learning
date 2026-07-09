@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+{% include 'nav.html' %}
+
+<center>
+
+    <!-- ✅ MESSAGES AT TOP -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="msg {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+</center>
+<script>
+setTimeout(() => {
+    let msgs = document.querySelectorAll(".msg");
+    msgs.forEach(msg => {
+        msg.style.transition = "opacity 0.5s";
+        msg.style.opacity = "0";
+        setTimeout(() => msg.remove(), 500);
+    });
+}, 3000);
+</script>
+
+</body>
+</html>

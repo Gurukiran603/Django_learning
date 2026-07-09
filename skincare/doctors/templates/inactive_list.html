@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Inactive Doctors</h2>
+
+{% for doctor in doctors %}
+  <div>
+    <h3>{{ doctor.name }} - {{ doctor.specialization }}</h3>
+    <form method="post" action="{% url 'activate_doctor' doctor.id %}">
+      {% csrf_token %}
+      <button type="submit">Activate</button>
+    </form>
+  </div>
+{% empty %}
+  <p>No inactive doctors.</p>
+{% endfor %}
+
+<button><a href="{% url 'doctor_list' %}">back to Doctor List </a></button>
+{% endblock %}

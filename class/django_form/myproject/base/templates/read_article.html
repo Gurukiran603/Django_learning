@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container" style="text-align: center;">
+    <h1>Article list</h1>
+    <a href="{% url 'home' %}"><button>Add Article</button></a><br><br>
+    <a href="{% url 'create_category' %}"><button>Create Category</button></a>
+    <a href="{% url 'history_article' %}"><button>History</button></a><br><br>
+
+    <form enctype="multipart/form-data">
+        <input type="text" name="q"  placeholder="Search articles...">
+        <select name="category" id="">
+            <option value="">All categories</option>
+            {% for i in categories %}
+            <option value="{{i.id}}" {% if selected_category == i.id %} selected{% endif %}>
+                {{i.name}}
+            </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+
+    </form>
+
+
+    <ul>
+        {% for i in data %}
+        <li>
+            id:{{i.id}} <br>
+            Title:{{i.title}} <br>
+            Description{{i.desc}} <br>
+            Author{{i.author}} <br>
+            Cost{{i.cost}} <br>
+            image:{% if i.image %}
+                <img src="{{i.image.url}}" alt="Image" width="100" height="100"> <br>
+                {% else %}
+                No image available <br>
+            {% endif %}
+            video:{% if i.video %}
+                <video src="{{i.video.url}}" type="video/mp4" width="400" height="400" controls></video> <br> 
+                {% else %}
+                No video available <br>
+            {% endif %}
+
+            
+
+            <a href="{% url 'update_article' i.id %}"><button>Edit</button></a>
+            <a href="{% url 'delete_article' i.id %}"><button>Delete</button></a><br><br>
+            
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

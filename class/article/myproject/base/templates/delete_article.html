@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Are u sure want to delete me {{sakshi.title}} baby ?</h2>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">yes,Breakup(I hate you)</button>
+</form><br><br>
+
+<a href="{% url 'read_article' %}"><button>NO please</button></a>
+{% endblock%}

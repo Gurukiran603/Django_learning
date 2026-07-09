@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2> student Data</h2>
+<a href="{% url 'student_data' %}"><button>view all data </button></a>
+
+<br><br>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit"> Submit</button>
+</form>
+{% endblock %}

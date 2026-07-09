@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Welcome to the Travel Guide</h1> <br>
+<p>Discover amazing destinations around the world!</p><br><br><hr>
+<a href="{% url 'read_destination' %}"><button>All destinations</button></a> <br><br><hr>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Destination</button>
+</form>
+{% endblock %}

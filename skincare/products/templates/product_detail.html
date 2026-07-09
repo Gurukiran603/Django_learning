@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for product in products %}
+    <div class="doctor-card">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <div class="card-content">
+        <h3>{{ product.name }}</h3>
+        <h3>Skin Type :{{product.skin_type}}</h3>
+        <p>{{ product.description }}</p>
+        <p>Price: ₹{{ product.price }}</p>
+      </div>
+    </div> 
+  {% endfor %}
+  
+  <button><a href="{% url 'product_list' %}">Back To List</a></button>
+{% endblock %}

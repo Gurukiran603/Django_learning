@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+    {% include 'nav.html'%}
+    <div id="messages">
+        {% for i in messages %}
+
+        <p style="color: blueviolet;">{{ i }}</p>
+        {% endfor %}
+    </div>
+    <script>
+        setTimeout(function(){
+            document.getElementById('messages').style.display='none';
+        },1000)
+    </script>
+    <center>
+        {% block content %}
+        
+        {% endblock %}
+    </center>
+</body>
+</html>

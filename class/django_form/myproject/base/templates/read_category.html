@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<h1>Category list</h1>
+
+<form>
+    <input type="text" name="search" value="{{search | default:''}}" placeholder="Search categories...">
+    <button type="submit">Search</button>
+
+<ul>
+    {% for i in data %}    <li>
+        id:{{i.id}} <br>
+        name:{{i.name}} <br>
+        desc:{{i.desc}} <br>
+        image:{% if i.image %}<img src="{{i.image.url}}" width="100px" height="100px"> {% else %}No image available{% endif %} <br>
+        video: {% if i.video %}<video width="320" height="240" controls>
+            <source src="{{i.video.url}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>{% else %}
+        No video available
+        {% endif %} <br>
+        <a href="{% url 'update_category' i.id %}"><button>Edit</button></a>
+        <a href="{% url 'delete_category' i.id %}"><button>Delete</button></a><br><br>
+</ul>
+{% endfor %}
+</form>
+{% endblock %}

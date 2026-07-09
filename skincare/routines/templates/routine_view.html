@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ routine_type }} Routine</h2>
+
+{% if steps %}
+    <ol>
+    {% for step in steps %}
+        <li>
+            <strong>{{ step.product.name }}</strong><br>
+            {{ step.product.description }}
+        </li>
+    {% endfor %}
+    </ol>
+{% else %}
+    <p>No products added to your {{ routine_type }} routine yet.</p>
+    <a href="{% url 'build_routine' routine_type %}">Build Routine</a>
+{% endif %}
+{% endblock %}

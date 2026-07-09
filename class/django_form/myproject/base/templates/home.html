@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Hello World 😊 </h1>
+
+<a href="{% url 'read_article' %}"><button>View All Articles</button></a>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+    
+</form>
+
+{% endblock %}

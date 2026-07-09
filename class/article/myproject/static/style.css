@@ -1,0 +1,94 @@
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    margin: 0;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+    color: #ff512f;
+}
+
+/* ===== FORM ===== */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== INPUT ===== */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* ===== BUTTON ===== */
+button {
+    background: #ff512f;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* hover */
+button:hover {
+    background: #dd2476;
+}
+
+/* ===== TABLE ===== */
+table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* header */
+th {
+    background: #ff512f;
+    color: white;
+    padding: 10px;
+}
+
+/* rows */
+td {
+    padding: 10px;
+}
+
+/* alternate row color */
+tr:nth-child(even) {
+    background: #ffe4e1;
+}
+
+/* hover effect */
+tr:hover {
+    background: #ffd6d6;
+}
+
+/* ===== MESSAGE ===== */
+#messages {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    color: #ff512f;
+}

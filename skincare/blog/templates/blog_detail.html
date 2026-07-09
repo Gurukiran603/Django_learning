@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ blog.title }}</h2>
+<p><em>{{ blog.category }} | {{ blog.created_at|date:"d M Y" }}</em></p>
+{% if blog.image %}
+  <img src="{{ blog.image.url }}" alt="{{ blog.title }}" width="400">
+{% endif %}
+<div>
+  {{ blog.content|linebreaks }}
+</div>
+<a href="{% url 'blog_list' %}">← Back to blog list</a>
+{% endblock %}

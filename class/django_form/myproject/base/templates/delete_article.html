@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>r u sure want to delete the article -{{data.title}}???😣😥😏</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit">Yes,Delete</button>
+</form><br>
+<a href="{% url 'read_article' %}"><button>NO,Cancel </button></a>
+{% endblock%}

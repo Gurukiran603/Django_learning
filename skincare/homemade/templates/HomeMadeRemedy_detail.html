@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+    <h2>{{ remedy.title }}</h2>
+    {% if remedy.image %}
+      <img src="{{ remedy.image.url }}" alt="{{ remedy.title }}" width="300">
+    {% endif %}
+    <p><strong>Category:</strong> {{ remedy.category }}</p>
+    <p><strong>Ingredients:</strong> {{ remedy.ingredients }}</p>
+    <p><strong>Instructions:</strong> {{ remedy.instructions }}</p>
+  
+
+  <button><a href="{% url 'homemade_list' %}">Back To List</a></button>
+{% endblock %}

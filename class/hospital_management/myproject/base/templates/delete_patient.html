@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>delete patient Data</h1>
+<h2>r u sure want to delete the article</h2>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes,Delete</button>
+</form><br>
+<a href="{% url 'read_patients' %}"><button>NO,Cancel </button></a>
+{% endblock%}

@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<h2> Update Article </h2>
+<form method="POST">
+    {% csrf_token %} <!-- to prevent hacker attack -->
+    <input type="text" name="title" placeholder="Title" value="{{ sakshi.title}}" required><br><br>
+    <input type="text" name="desc" placeholder="Description" value="{{ sakshi.desc}}"required><br><br>
+    <input type="text" name="author" placeholder="Author" value="{{ sakshi.author}}" required><br><br>
+    <input type="number" name="cost" placeholder="Cost" value="{{ sakshi.cost}}" required><br><br>
+
+    <button type="submit">submit</button> <br>
+    
+</form>
+
+<a href="{% url 'read_article' %}"><button>Back</button></a>
+{% endblock %}

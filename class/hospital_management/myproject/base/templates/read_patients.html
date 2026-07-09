@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>patient Data</h2>
+<form method="GET">
+    <input type="text" name="q" placeholder="Search patients..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<br>
+<a href="{% url 'home' %}"><button>Add patient</button></a> <br><br>
+<table margin="10px" cellpadding="10px" cellspacing="0px" border="1px">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>disease</th>
+            <th>doctor_assigned</th>
+            <th>Age</th>
+            <th>room_number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.disease }}</td>
+            <td>{{ patient.doctor_assigned }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.room_number }}</td>
+            <td>
+                <a href="{% url 'update_patient' patient.id %}">Update</a>
+                <a href="{% url 'delete_patient' patient.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

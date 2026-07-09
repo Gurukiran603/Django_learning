@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h2> Profile page</h2>
+    <h3>welcome, {{ data.first_name }} {{ data.last_name }}!</h3>
+
+    <p>Email: {{ data.email }}</p>
+    <p>Username: {{ data.username }}</p>
+    <p><a href="{% url 'update_profile' %}"><button>Update profile</button></a></p>
+    <a href="{% url 'update_password' %}"><button>Update password</button></a>
+    <p><a href="{% url 'signout' %}"><button>Sign out</button></a></p>
+{% endblock %}

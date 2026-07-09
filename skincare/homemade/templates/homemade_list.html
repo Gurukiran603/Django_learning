@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Homemade Skincare</h2>
+{% if user.profile.role == 'admin' %}  
+  <a href="{% url 'add_remedy' %}" class="dashboard-card">➕ Add Homemade Remedy</a><br>
+{% endif %}
+<br>
+<form method="get">
+  <label for="category">Filter by Category:</label>
+  <select name="category" onchange="this.form.submit()">
+    <option value="">All</option>
+    <option value="mask">Face Mask</option>
+    <option value="scrub">Scrub</option>
+    <option value="toner">Toner</option>
+    <option value="cleanser">Cleanser</option>
+    <option value="moisturizer">Moisturizer</option>
+  </select>
+</form>
+
+<div class="remedy-list" >
+  {% for remedy in remedies %}
+    <div class="remedy-card">
+      <h3>{{ remedy.title }}</h3>
+      {% if remedy.image %}
+        <img src="{{ remedy.image.url }}" alt="{{ remedy.title }}" width="300">
+      {% endif %}
+      
+      <p><strong>Category:</strong> {{ remedy.category }}</p>
+      <p><strong>Ingredients:</strong> {{ remedy.ingredients |truncatewords:5}}</p>
+      <p><strong>Instructions:</strong> {{ remedy.instructions |truncatewords:10}}</p>
+      <div class="button-group">
+        <button><a href="{% url 'homemaderemedy_detail_view' remedy.id %}">View</a></button>
+      {% if user.profile.role == 'admin' %}
+        
+        <button><a href="{% url 'edit_remedy' remedy.id %}">Edit</a></button>
+        <button><a href="{% url 'delete_remedy' remedy.id %}">Delete</a></button>
+      {% endif %}
+      </div>
+    </div>
+    
+  {% empty %}
+    <p>No remedies found for your skin type or category.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

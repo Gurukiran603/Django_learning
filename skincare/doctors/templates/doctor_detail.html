@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ doctor.name }}</h2>
+<p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+<p><strong>Email:</strong> {{ doctor.contact_email }}</p>
+<p><strong>Phone:</strong> {{ doctor.phone }}</p>
+<p><strong>Experience:</strong> {{ doctor.experience }} years</p>
+<p><strong>Availability:</strong> {{ doctor.availability }}</p>
+{% if doctor.image %}
+  <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" width="300">
+{% endif %}
+<p>{{ doctor.bio }}</p>
+<a href="{% url 'doctor_list' %}">← Back to list</a>
+{% endblock %}

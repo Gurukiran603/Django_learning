@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit {{ routine.routine_type }} Routine</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>Step No.</th>
+      <th>Product</th>
+    </tr>
+    {% for step in steps %}
+    <tr>
+      <td>
+        <input type="number" name="step_{{ step.id }}" value="{{ step.step_number }}" min="1" required>
+      </td>
+      <td>{{ step.product.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <button type="submit" style="color: rgb(1, 15, 15);">Update Order</button>
+</form>
+{% endblock %}
